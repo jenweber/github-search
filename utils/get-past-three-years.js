@@ -2,7 +2,7 @@ const requestData = require('./request-data')
 const moment = require('moment')
 
 const startingMonth = '2015-01'
-const endingMonth = '2015-02'
+const endingMonth = '2017-11'
 
 
 const user = process.argv[2]
@@ -20,6 +20,7 @@ function fetchFiles() {
 
   function timerLoop() {
     if (current.format('YYYY-MM') === endExcluding.format('YYYY-MM')) {
+      console.log(`download complete, ${startingMonth} to ${endingMonth}`)
       return
     } else {
       let query = calcDateRange(current)
