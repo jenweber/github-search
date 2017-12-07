@@ -11,7 +11,7 @@ function rawCount() {
     let incompleteResults = obj.incomplete_results
     let totalCount = obj.total_count
 
-    if (!incompleteResults) {
+    if (incompleteResults) {
       console.log(`WARNING ${file} results are incomplete`)
     }
 
@@ -21,7 +21,7 @@ function rawCount() {
   console.log('RAW COUNT', data)
 }
 
-function orgCount() {
+function attrCount(countFn) {
   let data = []
 
   fs.readdirSync(folder).forEach(file => {
@@ -31,16 +31,15 @@ function orgCount() {
     let incompleteResults = obj.incomplete_results
     let repos = obj.items
 
-    if (!incompleteResults) {
+    if (incompleteResults) {
       console.log(`WARNING ${file} results are incomplete`)
     }
 
-    totalOrgCount = countReposForOrgs(repos)
+    let totalCount = countFn(repos)
 
-    data.push([ date, totalOrgCount ])
+    data.push([ date, totalCount ])
   })
-
-  console.log('ORGANIZATION COUNT', data)
+  console.log(data)
 }
 
 function countReposForOrgs(repos) {
@@ -53,5 +52,15 @@ function countReposForOrgs(repos) {
   return counter
 }
 
+function countPopular(repos) {
+  let counter = 0;
+  repos.forEach(function(repo) {
+    if (repo.open_issues_count > 3) {
+      counter += 1
+    }
+  })
+  return counter
+}
+
 // rawCount()
-orgCount()
+attrCount(countPopular)
