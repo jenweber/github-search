@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Date', 'Count'],
+          [ '2015-01-01', 483 ],
+          [ '2015-02-01', 670 ],
+          [ '2015-03-01', 761 ],
+          [ '2015-04-01', 579 ],
+          [ '2015-05-01', 485 ],
+          [ '2015-06-01', 759 ],
+          [ '2015-07-01', 529 ],
+          [ '2015-08-01', 525 ],
+          [ '2015-09-01', 689 ],
+          [ '2015-10-01', 550 ],
+          [ '2015-11-01', 492 ],
+          [ '2015-12-01', 506 ],
+          [ '2016-01-01', 495 ],
+          [ '2016-02-01', 615 ],
+          [ '2016-03-01', 891 ],
+          [ '2016-04-01', 955 ],
+          [ '2016-05-01', 524 ],
+          [ '2016-06-01', 695 ],
+          [ '2016-07-01', 474 ],
+          [ '2016-08-01', 878 ],
+          [ '2016-09-01', 508 ],
+          [ '2016-10-01', 719 ],
+          [ '2016-11-01', 629 ],
+          [ '2016-12-01', 461 ],
+          [ '2017-01-01', 591 ],
+          [ '2017-02-01', 470 ],
+          [ '2017-03-01', 691 ],
+          [ '2017-04-01', 704 ],
+          [ '2017-05-01', 517 ],
+          [ '2017-06-01', 463 ],
+          [ '2017-07-01', 455 ],
+          [ '2017-08-01', 507 ],
+          [ '2017-09-01', 397 ],
+          [ '2017-10-01', 444 ],
+          [ '2017-11-01', 425 ]
+        ]);
+
+        var options = {
+          title: 'Count of new repositories by month',
+          hAxis: {title: 'Time'},
+          vAxis: {title: 'New Repos'},
+          legend: 'none',
+          trendlines: { 0: {} }    // Draw a trendline for data series 0.
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('raw-count-by-month'));
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Date', 'Count'],
+          [ '2015-01-01', 8 ],
+          [ '2015-02-01', 7 ],
+          [ '2015-03-01', 11 ],
+          [ '2015-04-01', 13 ],
+          [ '2015-05-01', 10 ],
+          [ '2015-06-01', 9 ],
+          [ '2015-07-01', 9 ],
+          [ '2015-08-01', 8 ],
+          [ '2015-09-01', 2 ],
+          [ '2015-10-01', 4 ],
+          [ '2015-11-01', 12 ],
+          [ '2015-12-01', 13 ],
+          [ '2016-01-01', 10 ],
+          [ '2016-02-01', 16 ],
+          [ '2016-03-01', 21 ],
+          [ '2016-04-01', 13 ],
+          [ '2016-05-01', 9 ],
+          [ '2016-06-01', 11 ],
+          [ '2016-07-01', 12 ],
+          [ '2016-08-01', 11 ],
+          [ '2016-09-01', 10 ],
+          [ '2016-10-01', 6 ],
+          [ '2016-11-01', 14 ],
+          [ '2016-12-01', 12 ],
+          [ '2017-01-01', 12 ],
+          [ '2017-02-01', 12 ],
+          [ '2017-03-01', 5 ],
+          [ '2017-04-01', 8 ],
+          [ '2017-05-01', 7 ],
+          [ '2017-06-01', 12 ],
+          [ '2017-07-01', 4 ],
+          [ '2017-08-01', 8 ],
+          [ '2017-09-01', 6 ],
+          [ '2017-10-01', 5 ],
+          [ '2017-11-01', 5 ]
+        ]);
+
+        var options = {
+          title: 'New repositories created by organizations per month',
+          hAxis: {title: 'Time'},
+          vAxis: {title: 'New Repos'},
+          legend: 'none',
+          trendlines: { 0: {} }    // Draw a trendline for data series 0.
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('organizations-count-by-month'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="raw-count-by-month" style="margin: 20px;"></div>
+    <div id="organizations-count-by-month" style="margin: 20px;"></div>
+  </body>
+</html>
