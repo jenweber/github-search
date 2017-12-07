@@ -17,12 +17,19 @@ function fetchFiles() {
   let endExcluding = moment(endingMonth, "YYYY-MM").add(1, 'months')
   let current = start
   let counter = 0
-  while (current.format('YYYY-MM') !== endExcluding.format('YYYY-MM')) {
-    let query = calcDateRange(current)
-    requestData(query, user)
-    current = current.add(1, 'months')
-    counter += 1
+
+  function timerLoop() {
+    if (current.format('YYYY-MM') === endExcluding.format('YYYY-MM')) {
+      return
+    } else {
+      let query = calcDateRange(current)
+      requestData(query, user)
+      current = current.add(1, 'months')
+      counter += 1
+      setTimeout(timerLoop, 7000 );
+    }
   }
+  timerLoop();
 }
 
 function calcDateRange(momentDate) {

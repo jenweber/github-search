@@ -24,7 +24,6 @@ function requestData(dateRange, user) {
           'User-Agent': user
       }
   };
-  // console.log(options.url)
   request(options, handleResponse);
 }
 
